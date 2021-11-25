@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "951119606847",
+    "project_id": "shoop-1b9ec",
+    "storage_bucket": "shoop-1b9ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:951119606847:android:2fcfe370fcec171e0fb48a",
+        "android_client_info": {
+          "package_name": "com.app.shoop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "951119606847-eq90ecgbkannsrlj84hg3ed95naffdnk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHvNbOB2TWdXfuaEgADZn99Ea2Ly-B5kw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "951119606847-eq90ecgbkannsrlj84hg3ed95naffdnk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

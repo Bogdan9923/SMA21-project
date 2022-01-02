@@ -5,4 +5,6 @@
     <string name="title_profile">Profile</string>
     <string name="register_title">Register</string>
     <string name="alreadyHasAccount">Already have an account? </string>
+    <string name="login_title">Log in</string>
+    <string name="doesntHaveAccount">"Dont have an account yet? "</string>
 </resources>

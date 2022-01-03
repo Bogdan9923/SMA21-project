@@ -1,16 +1,15 @@
-package com.app.shoop.ui.notifications;
+package com.app.shoop.ui.profile;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class NotificationsViewModel extends ViewModel {
-
+public class ProfileViewModel extends ViewModel {
     private MutableLiveData<String> mText;
 
-    public NotificationsViewModel() {
+    public ProfileViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is Profile fragment");
+        mText.setValue("This is Profile fragment!");
     }
 
     public LiveData<String> getText() {

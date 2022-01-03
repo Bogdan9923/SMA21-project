@@ -1,4 +1,4 @@
-package com.app.shoop.ui.notifications;
+package com.app.shoop.ui.cart;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.app.shoop.R;
 
-public class NotificationsFragment extends Fragment {
-
-    private NotificationsViewModel notificationsViewModel;
+public class CartFragment extends Fragment {
+    private CartViewModel cartViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                new ViewModelProvider(this).get(NotificationsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_notifications, container, false);
-        final TextView textView = root.findViewById(R.id.text_notifications);
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        cartViewModel =
+                new ViewModelProvider(this).get(CartViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_cart, container, false);
+        final TextView textView = root.findViewById(R.id.text_cart);
+        cartViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
@@ -32,4 +32,5 @@ public class NotificationsFragment extends Fragment {
         });
         return root;
     }
+
 }

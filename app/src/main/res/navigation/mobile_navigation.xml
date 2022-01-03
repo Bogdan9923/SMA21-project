@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_shopcart"
-        android:name="com.app.shoop.ui.dashboard.DashboardFragment"
+        android:name="com.app.shoop.ui.cart.CartFragment"
         android:label="@string/title_shopcart"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_cart" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.app.shoop.ui.notifications.NotificationsFragment"
+        android:name="com.app.shoop.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_profile" />
 </navigation>

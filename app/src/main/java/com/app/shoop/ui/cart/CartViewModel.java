@@ -1,16 +1,16 @@
-package com.app.shoop.ui.dashboard;
+package com.app.shoop.ui.cart;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class DashboardViewModel extends ViewModel {
+public class CartViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public DashboardViewModel() {
+    public CartViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard cart fragment");
+        mText.setValue("This is Shopping cart fragment!");
     }
 
     public LiveData<String> getText() {

@@ -30,6 +30,7 @@ public class ProfileFragment extends Fragment {
     Button loginButton;
     Button signinButton;
     Button logoutButton;
+    TextView welcomeText;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,  Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class ProfileFragment extends Fragment {
         loginButton = (Button) root.findViewById(R.id.profileLoginButton);
         signinButton = (Button) root.findViewById(R.id.profileRegisterButton);
         logoutButton = (Button) root.findViewById(R.id.profileLogoutButton);
+        welcomeText = (TextView) root.findViewById(R.id.profileDescText);
 
         profileViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -60,6 +62,7 @@ public class ProfileFragment extends Fragment {
         loginButton.setVisibility(View.GONE);
         signinButton.setVisibility(View.GONE);
         logoutButton.setVisibility(View.VISIBLE);
+        welcomeText.setText(getString(R.string.profileWelcomingText)+" "+auth.getCurrentUser().getEmail());
 
     }
     else
@@ -67,6 +70,7 @@ public class ProfileFragment extends Fragment {
         loginButton.setVisibility(View.VISIBLE);
         signinButton.setVisibility(View.VISIBLE);
         logoutButton.setVisibility(View.GONE);
+        welcomeText.setText(getString(R.string.profileAskingForLoginText));
     }
 
 

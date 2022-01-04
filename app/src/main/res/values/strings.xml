@@ -7,4 +7,6 @@
     <string name="alreadyHasAccount">Already have an account? </string>
     <string name="login_title">Log in</string>
     <string name="doesntHaveAccount">"Dont have an account yet? "</string>
+    <string name="profileWelcomingText">Welcome, </string>
+    <string name="profileAskingForLoginText">Please log in or register to continue.</string>
 </resources>

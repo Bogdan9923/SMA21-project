@@ -94,7 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
             returnCode = retCodes.BLANK_FIELDS;
         }
 
-        if(returnCode!= retCodes.SUCCESS && !userPwd.equals(confirmPwd) )
+        if(returnCode == retCodes.SUCCESS && !userPwd.equals(confirmPwd) )
         {
             Toast.makeText(this,"Passwords do not match",Toast.LENGTH_SHORT).show();
             returnCode = retCodes.PWD_MISSMATCH;

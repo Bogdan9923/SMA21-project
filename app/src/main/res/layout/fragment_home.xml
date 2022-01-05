@@ -44,4 +44,11 @@
         android:ems="10"
         android:hint="Search products"
         android:inputType="textPersonName" />
+
+    <ListView
+        android:id="@+id/main_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="656dp"
+        android:layout_below="@+id/searchbar"
+        android:layout_marginTop="7dp"/>
 </RelativeLayout>

@@ -10,4 +10,16 @@
         <!--<item name="android:textSize">12pt</item>-->
     </style>
 
+    <style name="style_add_button">
+
+        <item name="android:layout_width">70dp</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:backgroundTint">#3C3A3A</item>
+        <item name="android:text">Add to cart</item>
+        <item name="android:textSize">12sp</item>
+
+    </style>
+
 </resources>

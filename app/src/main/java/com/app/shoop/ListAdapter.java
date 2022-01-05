@@ -39,6 +39,7 @@ public class ListAdapter extends ArrayAdapter<Product> {
         itemName.setText(product.getName());
         itemPrice.setText(product.getPrice());
         //to add image from web
+        new DownloadImageFromInternet(imageView).execute(product.getImage());
 
 
         return super.getView(position, convertView, parent);

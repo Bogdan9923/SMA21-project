@@ -1,19 +1,23 @@
 package com.app.shoop;
 
+import android.util.Log;
+
 public class Product {
 
-    private String name;
-    private String image;
-    private int price;
-    private String description;
+    private static final String TAG = "ProductPage";
+
+    public String name;
+    public String image;
+    public int price;
 
 
-    public Product(String name, String image, int price, String description) {
+    public Product(String name, String image, int price ) {
         this.name = name;
         this.image = image;
         this.price = price;
-        this.description = description;
+        Log.v(TAG, "called constructor");
     }
+
 
     public String getName() {
         return name;
@@ -27,9 +31,6 @@ public class Product {
         return price;
     }
 
-    public String getDescription() {
-        return description;
-    }
 
     public void setName(String name) {
         this.name = name;
@@ -43,7 +44,5 @@ public class Product {
         this.price = price;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+
 }

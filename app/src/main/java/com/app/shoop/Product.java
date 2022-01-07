@@ -4,18 +4,29 @@ import android.util.Log;
 
 public class Product {
 
-    private static final String TAG = "ProductPage";
-
     public String name;
     public String image;
     public int price;
+    public String description;
 
+    public Product()
+    {
+
+    }
 
     public Product(String name, String image, int price ) {
         this.name = name;
         this.image = image;
         this.price = price;
-        Log.v(TAG, "called constructor");
+
+    }
+
+    public Product(String name, String image, int price ,String description) {
+        this.name = name;
+        this.image = image;
+        this.price = price;
+        this.description = description;
+
     }
 
 
@@ -31,7 +42,6 @@ public class Product {
         return price;
     }
 
-
     public void setName(String name) {
         this.name = name;
     }
@@ -44,5 +54,11 @@ public class Product {
         this.price = price;
     }
 
+    public String getDescription() {
+        return description;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

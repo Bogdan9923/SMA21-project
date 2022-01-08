@@ -74,8 +74,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
 
     public void login(View view) {
@@ -99,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                     {
                         Toast.makeText(LoginActivity.this,"Login successful", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        finish();
                     }
                     else
                     {

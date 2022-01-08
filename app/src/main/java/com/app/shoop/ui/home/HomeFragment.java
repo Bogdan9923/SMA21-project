@@ -62,8 +62,9 @@ public class HomeFragment extends Fragment {
             }
         });
 
-         listView = (ListView) root.findViewById(R.id.main_list_view);
-
+        listView = (ListView) root.findViewById(R.id.main_list_view);
+        searchButton = (Button) root.findViewById(R.id.searchbutton);
+        searchField = (EditText) root.findViewById(R.id.searchbar);
 
         databaseListPopulation();
 
@@ -80,6 +81,19 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String searchQuery = searchField.getText().toString();
+
+                if(searchQuery != null)
+                {
+                    databaseListPopulation(searchQuery);
+                }
+            }
+        });
+
+
         return root;
     }
 
@@ -89,7 +103,6 @@ public class HomeFragment extends Fragment {
         product = new Product();
 
         databaseReference = database.getReference().child("products");
-
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -110,4 +123,36 @@ public class HomeFragment extends Fragment {
         });
     }
 
+    public void databaseListPopulation(String query)
+    {
+        ArrayList<Product> productArrayList = new ArrayList<>();
+        product = new Product();
+
+        databaseReference = database.getReference().child("products");
+
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds: snapshot.getChildren())
+                {
+                    product = ds.getValue(Product.class);
+                    if(stringCompare(product.getName(),query)) {
+                        productArrayList.add(product);
+                    }
+                }
+                ListAdapter listAdapter = new ListAdapter(getActivity() ,R.layout.list_item_product,productArrayList);
+                listView.setAdapter(listAdapter);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private boolean stringCompare(String firstString,String secondString)
+    {
+        return firstString.toLowerCase().contains(secondString.toLowerCase());
+    }
 }

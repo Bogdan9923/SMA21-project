@@ -7,12 +7,12 @@
     tools:context=".ProductPage">
 
     <TextView
-        android:id="@+id/textView123"
+        android:id="@+id/product_page_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/product_page_image"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="25dp"
         android:text="Product page"
         android:textColor="#170808"
         android:textSize="36sp"
@@ -20,4 +20,57 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="297dp" />
+
+    <ImageView
+        android:id="@+id/product_page_image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="45dp"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="55dp"
+        app:srcCompat="@drawable/image_not_found" />
+
+    <TextView
+        android:id="@+id/product_page_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/product_page_name"
+        android:layout_alignStart="@+id/product_page_image"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="40dp"
+        android:text="Price: 300RON"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/product_page_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/product_page_price"
+        android:layout_alignStart="@+id/product_page_image"
+        android:layout_alignEnd="@+id/product_page_image"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="0dp"
+        android:text="Description: asdasdasdhasbdauhsdbausdbauhbsdauhbsduahbdsaubdsa" />
+
+    <Button
+        android:id="@+id/product_page_add_button"
+        style="@style/style_button"
+        android:layout_below="@+id/product_page_description"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:text="buy" />
+
+    <Button
+        android:id="@+id/product_page_back_button"
+        style="@style/style_button"
+        android:layout_below="@+id/product_page_add_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="back" />
 </RelativeLayout>

@@ -110,7 +110,6 @@ public class HomeFragment extends Fragment {
                 for(DataSnapshot ds: snapshot.getChildren())
                 {
                     product = ds.getValue(Product.class);
-                    //i think here needs to be implemented condition for search button. maybe.
                     productArrayList.add(product);
                 }
                 ListAdapter listAdapter = new ListAdapter(getActivity() ,R.layout.list_item_product,productArrayList);
@@ -138,7 +137,7 @@ public class HomeFragment extends Fragment {
                 {
                     product = ds.getValue(Product.class);
                     if(stringCompare(product.getName(),query)) {
-                        productArrayList.add(product);
+                         productArrayList.add(product);
                     }
                 }
                 ListAdapter listAdapter = new ListAdapter(getActivity() ,R.layout.list_item_product,productArrayList);

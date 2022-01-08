@@ -1,5 +1,6 @@
 package com.app.shoop.ui.profile;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -57,21 +58,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-    if(auth.getCurrentUser() != null)
-    {
-        loginButton.setVisibility(View.GONE);
-        signinButton.setVisibility(View.GONE);
-        logoutButton.setVisibility(View.VISIBLE);
-        welcomeText.setText(getString(R.string.profileWelcomingText)+" "+auth.getCurrentUser().getEmail());
-
-    }
-    else
-    {
-        loginButton.setVisibility(View.VISIBLE);
-        signinButton.setVisibility(View.VISIBLE);
-        logoutButton.setVisibility(View.GONE);
-        welcomeText.setText(getString(R.string.profileAskingForLoginText));
-    }
+        refreshItems();
 
 
     loginButton.setOnClickListener(new View.OnClickListener() {
@@ -93,11 +80,40 @@ public class ProfileFragment extends Fragment {
         public void onClick(View view) {
             auth.signOut();
             Toast.makeText(getActivity(),"Goodbye", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(getActivity(), MainActivity.class));
+            refreshItems();
+           // startActivity(new Intent(getActivity(), MainActivity.class));
+           // getActivity().finish();
         }
     });
 
 
         return root;
     }
+
+    public void onResume() {
+
+        refreshItems();
+        super.onResume();
+    }
+
+    public void refreshItems()
+    {
+        if(auth.getCurrentUser() != null)
+        {
+            loginButton.setVisibility(View.GONE);
+            signinButton.setVisibility(View.GONE);
+            logoutButton.setVisibility(View.VISIBLE);
+            welcomeText.setText(getString(R.string.profileWelcomingText)+" "+auth.getCurrentUser().getEmail());
+
+        }
+        else
+        {
+            loginButton.setVisibility(View.VISIBLE);
+            signinButton.setVisibility(View.VISIBLE);
+            logoutButton.setVisibility(View.GONE);
+            welcomeText.setText(getString(R.string.profileAskingForLoginText));
+        }
+
+    }
+
 }

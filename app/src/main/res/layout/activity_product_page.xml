@@ -49,7 +49,7 @@
     <TextView
         android:id="@+id/product_page_description"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_below="@+id/product_page_price"
         android:layout_alignStart="@+id/product_page_image"
         android:layout_alignEnd="@+id/product_page_image"
@@ -63,7 +63,7 @@
         style="@style/style_button"
         android:layout_below="@+id/product_page_description"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="0dp"
         android:text="buy" />
 
     <Button
@@ -71,6 +71,6 @@
         style="@style/style_button"
         android:layout_below="@+id/product_page_add_button"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:text="back" />
 </RelativeLayout>

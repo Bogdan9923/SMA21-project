@@ -61,6 +61,7 @@
     <Button
         android:id="@+id/product_page_add_button"
         style="@style/style_button"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/product_page_description"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="0dp"

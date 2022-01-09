@@ -7,22 +7,138 @@
     tools:context=".ui.order.OrderActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/order_item_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="176dp"
-        android:text="TextView"
+        android:layout_marginTop="32dp"
+        android:text="ItemList"
+        android:textColor="#171414"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/order_phone"
+        app:layout_constraintTop_toBottomOf="@+id/order_phone" />
+
+    <TextView
+        android:id="@+id/order_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Total : 2500 RON"
+        android:textColor="#171414"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/order_item_list"
+        app:layout_constraintTop_toBottomOf="@+id/order_item_list" />
+
+    <TextView
+        android:id="@+id/order_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="8dp"
+        android:text="Checkout"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/order_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="332dp"
-        android:text="TextView"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="60dp"
+        android:text="Full name"
+        android:textColor="#171414"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/order_title" />
+
+    <TextView
+        android:id="@+id/order_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Address"
+        android:textColor="#171414"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/order_name"
+        app:layout_constraintTop_toBottomOf="@+id/order_name" />
+
+    <TextView
+        android:id="@+id/order_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Phone number"
+        android:textColor="#171414"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/order_address"
+        app:layout_constraintTop_toBottomOf="@+id/order_address" />
+
+    <EditText
+        android:id="@+id/order_name_edit"
+        android:background="@drawable/round_corners_text_box"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="48dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/order_name"
+        app:layout_constraintTop_toBottomOf="@+id/order_title" />
+
+    <EditText
+        android:id="@+id/order_address_edit"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/round_corners_text_box"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        app:layout_constraintStart_toEndOf="@+id/order_address"
+        app:layout_constraintTop_toBottomOf="@+id/order_name_edit" />
+
+    <EditText
+        android:id="@+id/order_phone_edit"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/round_corners_text_box"
+        android:ems="10"
+        android:inputType="phone"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        app:layout_constraintStart_toEndOf="@+id/order_phone"
+        app:layout_constraintTop_toBottomOf="@+id/order_address_edit" />
+
+    <Button
+        android:id="@+id/place_order_button"
+        style="@style/style_button"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:text="Place Order"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_total" />
+
+    <Button
+        android:id="@+id/order_cancel_button"
+        style="@style/style_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="Cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/place_order_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -77,5 +77,11 @@ public class Cart {
         return map;
     }
 
+    public void clearCart()
+    {
+        cartPref = context.getSharedPreferences(context.getString(R.string.cart_file_key), Context.MODE_PRIVATE);
+        cartPref.edit().clear().apply();
+    }
+
 
 }

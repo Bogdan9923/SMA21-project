@@ -28,7 +28,7 @@
     <ListView
         android:id="@+id/shopping_cart_listview"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="300dp"
         android:layout_below="@+id/text_cart"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
@@ -36,7 +36,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
         tools:listitem="@layout/cart_item"
-        android:visibility="gone"/>
+        />
 
     <TextView
         android:id="@+id/empty_cart_text"
@@ -52,6 +52,40 @@
         android:textSize="36sp"
         android:textStyle="italic"
         android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/cart_removeall_button"
+        style="@style/style_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cart_proceed_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+
+        android:text="Clear Cart" />
+
+    <Button
+        android:id="@+id/cart_proceed_button"
+        style="@style/style_button"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shopping_cart_listview"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50"
+
+        android:text="Proceed to checkout" />
+
+    <TextView
+        android:id="@+id/cart_total_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shopping_cart_listview"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="6dp"
+        android:text="Total: 1500 RON"
+        android:textColor="#3F51B5"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Shoop">
-        <activity android:name=".ProductPage"></activity>
+        <activity android:name=".ui.order.OrderActivity"></activity>
+        <activity android:name=".ProductPage" />
         <activity android:name=".SomeTest">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />

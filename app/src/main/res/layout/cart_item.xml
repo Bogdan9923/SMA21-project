@@ -77,7 +77,8 @@
                     android:layout_marginTop="13dp"
                     android:layout_marginBottom="13dp"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:textAlignment="center" />
 
                 <Button
                     android:id="@+id/cart_item_remove_button"

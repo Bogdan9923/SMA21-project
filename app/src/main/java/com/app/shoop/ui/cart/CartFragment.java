@@ -1,6 +1,8 @@
 package com.app.shoop.ui.cart;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,8 +21,11 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.app.shoop.ListAdapter;
+import com.app.shoop.LoginActivity;
 import com.app.shoop.Product;
 import com.app.shoop.R;
+import com.app.shoop.ui.order.OrderActivity;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -29,15 +35,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CartFragment extends Fragment {
+public class CartFragment extends Fragment{
+
     private CartViewModel cartViewModel;
     private ListView listView;
-    private CartItem item;
     CartListAdapter cartListAdapter;
     ArrayList<CartItem> cartItemArrayList = new ArrayList<>();
     Product product;
+
     private com.google.firebase.database.DatabaseReference databaseReference;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private FirebaseAuth auth;
+
+    private Button clearCartButton;
+    private Button proceedToCheckoutButton;
+    private TextView totalText;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -45,23 +58,60 @@ public class CartFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_cart, container, false);
         randomCode();
         listView = (ListView) root.findViewById(R.id.shopping_cart_listview);
+        clearCartButton = (Button) root.findViewById(R.id.cart_removeall_button);
+        proceedToCheckoutButton = (Button) root.findViewById(R.id.cart_proceed_button);
+        totalText = (TextView) root.findViewById(R.id.cart_total_cost);
 
         populateCart(root);
 
-        SharedPreferences.OnSharedPreferenceChangeListener spChanged = new
-                SharedPreferences.OnSharedPreferenceChangeListener() {
-                    @Override
-                    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
-                                                          String key) {
-                        populateCart(root);
-                    }
-                };
+
+
+
+        clearCartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearCart();
+            }
+        });
+
+
+        proceedToCheckoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                proceedToCheckout();
+            }
+        });
+
 
 
         return root;
     }
 
 
+    private void clearCart()
+    {
+        SharedPreferences cartPref;
+        cartPref = getContext().getSharedPreferences(getContext().getString(R.string.cart_file_key), Context.MODE_PRIVATE);
+        cartPref.edit().clear().apply();
+
+
+    }
+
+    private void proceedToCheckout()
+    {
+        auth = FirebaseAuth.getInstance();
+        if(auth.getCurrentUser()!=null)
+        {
+            Intent intent = new Intent(getActivity(), OrderActivity.class);
+            startActivity(intent);
+        }
+        else
+        {
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            startActivity(intent);
+            Toast.makeText(getActivity(),"Please log in to continue", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     private void randomCode()
     {
@@ -96,7 +146,6 @@ public class CartFragment extends Fragment {
                         cartItemArrayList.remove(c);
                         cartItemArrayList.add(new CartItem(product.getName(),product.getPrice(),c.getCount()));
 
-                       // Log.v("price getter:", "index=" + globalPrice);
                     }
                 }
                 cartListAdapter.notifyDataSetChanged();
@@ -114,8 +163,6 @@ public class CartFragment extends Fragment {
     {
         TextView empty_cart_text = (TextView) root.findViewById(R.id.empty_cart_text);
 
-        item = new CartItem();
-
         Cart cart = new Cart(getContext());
         Map<String,Integer> cartItems;
         cartItems = cart.getCartItems();
@@ -124,6 +171,9 @@ public class CartFragment extends Fragment {
             if(cartItems.size() > 0){
                 empty_cart_text.setVisibility(View.GONE);
                 listView.setVisibility(View.VISIBLE);
+                proceedToCheckoutButton.setVisibility(View.VISIBLE);
+                clearCartButton.setVisibility(View.VISIBLE);
+                totalText.setVisibility(View.VISIBLE);
 
                 for (Map.Entry<String, Integer> entry : cartItems.entrySet()) {
                     String name = entry.getKey();
@@ -140,6 +190,9 @@ public class CartFragment extends Fragment {
             else{
                 empty_cart_text.setVisibility(View.VISIBLE);
                 listView.setVisibility(View.GONE);
+                proceedToCheckoutButton.setVisibility(View.GONE);
+                clearCartButton.setVisibility(View.GONE);
+                totalText.setVisibility(View.GONE);
             }
         }
 

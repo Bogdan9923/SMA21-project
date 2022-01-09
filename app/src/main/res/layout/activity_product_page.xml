@@ -64,7 +64,7 @@
         android:layout_below="@+id/product_page_description"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="0dp"
-        android:text="buy" />
+        android:text="add to cart" />
 
     <Button
         android:id="@+id/product_page_back_button"

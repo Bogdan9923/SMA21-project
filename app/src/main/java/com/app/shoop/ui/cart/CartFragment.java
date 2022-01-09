@@ -65,8 +65,6 @@ public class CartFragment extends Fragment{
         populateCart(root);
 
 
-
-
         clearCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,7 +92,6 @@ public class CartFragment extends Fragment{
         cartPref = getContext().getSharedPreferences(getContext().getString(R.string.cart_file_key), Context.MODE_PRIVATE);
         cartPref.edit().clear().apply();
 
-
     }
 
     private void proceedToCheckout()
@@ -103,6 +100,8 @@ public class CartFragment extends Fragment{
         if(auth.getCurrentUser()!=null)
         {
             Intent intent = new Intent(getActivity(), OrderActivity.class);
+            intent.putExtra("Items",stringifyItems());
+            intent.putExtra("TotalPrice",totalText.getText().toString());
             startActivity(intent);
         }
         else
@@ -110,6 +109,7 @@ public class CartFragment extends Fragment{
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);
             Toast.makeText(getActivity(),"Please log in to continue", Toast.LENGTH_SHORT).show();
+
         }
     }
 
@@ -148,7 +148,9 @@ public class CartFragment extends Fragment{
 
                     }
                 }
+
                 cartListAdapter.notifyDataSetChanged();
+                recalculateTotal();
 
             }
             @Override
@@ -196,6 +198,29 @@ public class CartFragment extends Fragment{
             }
         }
 
+    }
+
+    public void recalculateTotal()
+    {
+        int totalPrice = 0;
+        for(CartItem item: cartItemArrayList)
+        {
+            totalPrice += item.getPrice()*item.getCount();
+        }
+        totalText.setText("Total: "+String.valueOf(totalPrice)+" RON");
+
+    }
+
+    public String stringifyItems()
+    {
+        String res="";
+
+        for(CartItem item: cartItemArrayList)
+        {
+            res = res + item.getName() + " x " + item.getCount() + "\n";
+        }
+        Log.v("TAG",res);
+        return res;
     }
 
 }

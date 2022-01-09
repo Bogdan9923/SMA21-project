@@ -53,7 +53,12 @@ public class Cart {
     {
         cartPref = context.getSharedPreferences(context.getString(R.string.cart_file_key), Context.MODE_PRIVATE);
         editor = cartPref.edit();
-        editor.putInt(name,newQuant);
+        if(newQuant < 1) {
+            removeItem(name);
+        }
+        else {
+            editor.putInt(name, newQuant);
+        }
         editor.apply();
     }
 

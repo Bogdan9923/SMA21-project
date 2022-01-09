@@ -80,8 +80,8 @@
                     android:inputType="number" />
 
                 <Button
-                    style="@style/style_add_button"
                     android:id="@+id/cart_item_remove_button"
+                    style="@style/style_add_button"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
@@ -91,7 +91,7 @@
                     android:layout_marginTop="13dp"
                     android:layout_marginBottom="13dp"
                     android:layout_toEndOf="@+id/cart_item_count"
-                    android:text="Revome" />
+                    android:text="Remove" />
 
                 <TextView
                     android:id="@+id/cart_item_sometextview"

@@ -6,19 +6,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.app.shoop.ui.cart.Cart;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListAdapter extends ArrayAdapter<Product> {
-    private static final String TAG = "AdapterPage";
 
 
     private Context mContext;
@@ -28,7 +29,7 @@ public class ListAdapter extends ArrayAdapter<Product> {
         super(context,resource,productArrayList);
         this.mContext = context;
         this.resourceLayout = resource;
-        Log.v(TAG, "called constructor");
+
 
     }
 
@@ -36,7 +37,7 @@ public class ListAdapter extends ArrayAdapter<Product> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        Log.v(TAG, "called getView");
+
         View listItemView = convertView;
 
         String name = getItem(position).getName();
@@ -47,21 +48,30 @@ public class ListAdapter extends ArrayAdapter<Product> {
         Product product = new Product(name,image,price);
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        Log.v(TAG, "set inflater");
         listItemView = inflater.inflate(resourceLayout,parent,false);
 
         ImageView imageView = listItemView.findViewById(R.id.list_item_image);
         TextView itemName = listItemView.findViewById(R.id.list_item_name);
         TextView itemPrice = listItemView.findViewById(R.id.list_item_price);
+        Button addCartButton = listItemView.findViewById(R.id.list_item_add_button);
 
-        Log.v(TAG, "set new values");
+
 
 
         Picasso.get().load(product.getImage()).placeholder(R.drawable.image_not_found).into(imageView);
         itemName.setText(name);
         itemPrice.setText(String.valueOf(price) + " RON");
 
-        Log.v(TAG, "before return");
+        addCartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Cart cart = new Cart(mContext);
+                cart.addToCart(name);
+
+            }
+        });
+
         return listItemView;
 
     }

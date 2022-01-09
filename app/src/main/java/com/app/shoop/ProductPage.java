@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.app.shoop.ui.cart.Cart;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -82,7 +83,9 @@ public class ProductPage extends AppCompatActivity {
         buyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //de implementat add to cart din pagina de produs.
+                Cart cart = new Cart(getApplicationContext());
+                cart.addToCart(prodName);
+                finish();
             }
         });
 

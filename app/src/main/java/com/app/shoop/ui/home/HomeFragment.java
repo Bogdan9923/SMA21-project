@@ -112,7 +112,7 @@ public class HomeFragment extends Fragment {
                     product = ds.getValue(Product.class);
                     productArrayList.add(product);
                 }
-                ListAdapter listAdapter = new ListAdapter(getActivity() ,R.layout.list_item_product,productArrayList);
+                ListAdapter listAdapter = new ListAdapter(getContext() ,R.layout.list_item_product,productArrayList);
                 listView.setAdapter(listAdapter);
             }
             @Override

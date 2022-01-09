@@ -10,4 +10,5 @@
     <string name="profileWelcomingText">Welcome, </string>
     <string name="profileAskingForLoginText">Please log in or register to continue.</string>
     <string name="cart_file_key">app_user_cart</string>
+    <string name="cart_empty_string">Your shopping cart is empty!</string>
 </resources>

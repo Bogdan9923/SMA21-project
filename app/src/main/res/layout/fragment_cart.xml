@@ -67,6 +67,7 @@
         android:id="@+id/cart_proceed_button"
         style="@style/style_button"
         android:layout_height="wrap_content"
+        android:layout_width="150dp"
         android:layout_below="@+id/shopping_cart_listview"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"

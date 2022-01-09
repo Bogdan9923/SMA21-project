@@ -35,7 +35,7 @@
                     android:layout_marginTop="4dp"
                     android:text="Telefon"
                     android:textColor="@color/black"
-                    android:textSize="28sp"
+                    android:textSize="26sp"
 
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -59,9 +59,11 @@
             <Button
                 android:id="@+id/list_item_add_button"
                 style="@style/style_add_button"
+                android:layout_width="wrap_content"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:focusable="false"/>
+                android:focusable="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </LinearLayout>
 

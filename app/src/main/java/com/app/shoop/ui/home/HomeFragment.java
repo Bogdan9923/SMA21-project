@@ -136,7 +136,7 @@ public class HomeFragment extends Fragment {
                 for(DataSnapshot ds: snapshot.getChildren())
                 {
                     product = ds.getValue(Product.class);
-                    if(stringCompare(product.getName(),query)) {
+                    if(stringCompare(product.getName(),query,product.getDescription())) {
                          productArrayList.add(product);
                     }
                 }
@@ -150,8 +150,8 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private boolean stringCompare(String firstString,String secondString)
+    private boolean stringCompare(String firstString,String secondString, String desc)
     {
-        return firstString.toLowerCase().contains(secondString.toLowerCase());
+        return firstString.toLowerCase().contains(secondString.toLowerCase()) || desc.toLowerCase().contains(secondString.toLowerCase());
     }
 }

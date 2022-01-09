@@ -83,7 +83,7 @@ public class ShowOrdersActivity extends AppCompatActivity {
                      }
                 }
 
-                adapter = new OrderAdapter(getApplicationContext(), R.layout.cart_item, orderArrayList);
+                adapter = new OrderAdapter(getApplicationContext(), R.layout.order_item, orderArrayList);
                 listView.setAdapter(adapter);
 
                 if(orderArrayList.size()==0)

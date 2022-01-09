@@ -50,7 +50,7 @@
                         android:layout_height="match_parent"
                         android:fontFamily="sans-serif-condensed"
                         android:text="Price: 300 RON"
-                        android:textColor="#3F51B5"
+                        android:textColor="@color/teal"
                         android:textSize="18sp"
                         android:gravity="center_vertical">
 

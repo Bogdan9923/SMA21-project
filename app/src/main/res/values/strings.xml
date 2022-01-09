@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Shoop</string>
-    <string name="title_home">Home</string>
-    <string name="title_shopcart">Shopping cart</string>
-    <string name="title_profile">Profile</string>
+    <string name="title_home">Shoop</string>
+    <string name="title_shopcart">Shoop</string>
+    <string name="title_profile">Shoop</string>
     <string name="register_title">Register</string>
     <string name="alreadyHasAccount">Already have an account? </string>
     <string name="login_title">Log in</string>

@@ -21,6 +21,7 @@ import com.app.shoop.LoginActivity;
 import com.app.shoop.MainActivity;
 import com.app.shoop.R;
 import com.app.shoop.RegisterActivity;
+import com.app.shoop.ui.order.ShowOrdersActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ProfileFragment extends Fragment {
@@ -31,6 +32,7 @@ public class ProfileFragment extends Fragment {
     Button loginButton;
     Button signinButton;
     Button logoutButton;
+    Button myOrdersButton;
     TextView welcomeText;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -50,6 +52,7 @@ public class ProfileFragment extends Fragment {
         signinButton = (Button) root.findViewById(R.id.profileRegisterButton);
         logoutButton = (Button) root.findViewById(R.id.profileLogoutButton);
         welcomeText = (TextView) root.findViewById(R.id.profileDescText);
+        myOrdersButton = (Button) root.findViewById(R.id.profile_orders_button);
 
         profileViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -86,6 +89,14 @@ public class ProfileFragment extends Fragment {
         }
     });
 
+    myOrdersButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getActivity(), ShowOrdersActivity.class);
+            startActivity(intent);
+        }
+    });
+
 
         return root;
     }
@@ -103,7 +114,9 @@ public class ProfileFragment extends Fragment {
             loginButton.setVisibility(View.GONE);
             signinButton.setVisibility(View.GONE);
             logoutButton.setVisibility(View.VISIBLE);
-            welcomeText.setText(getString(R.string.profileWelcomingText)+" "+auth.getCurrentUser().getEmail());
+            myOrdersButton.setVisibility(View.VISIBLE);
+            String[] parts = auth.getCurrentUser().getEmail().split("@");
+            welcomeText.setText(getString(R.string.profileWelcomingText)+" "+parts[0]);
 
         }
         else
@@ -111,6 +124,7 @@ public class ProfileFragment extends Fragment {
             loginButton.setVisibility(View.VISIBLE);
             signinButton.setVisibility(View.VISIBLE);
             logoutButton.setVisibility(View.GONE);
+            myOrdersButton.setVisibility(View.GONE);
             welcomeText.setText(getString(R.string.profileAskingForLoginText));
         }
 

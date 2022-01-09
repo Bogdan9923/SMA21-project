@@ -5,18 +5,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -35,6 +39,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.Thread.sleep;
+
 public class CartFragment extends Fragment{
 
     private CartViewModel cartViewModel;
@@ -50,6 +56,7 @@ public class CartFragment extends Fragment{
     private Button clearCartButton;
     private Button proceedToCheckoutButton;
     private TextView totalText;
+
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -68,7 +75,9 @@ public class CartFragment extends Fragment{
         clearCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 clearCart();
+                populateCart(root);
             }
         });
 
@@ -142,10 +151,8 @@ public class CartFragment extends Fragment{
                     product = ds.getValue(Product.class);
                     if(product.getName().equals(name))
                     {
-
                         cartItemArrayList.remove(c);
                         cartItemArrayList.add(new CartItem(product.getName(),product.getPrice(),c.getCount()));
-
                     }
                 }
 
@@ -186,7 +193,8 @@ public class CartFragment extends Fragment{
 
                 }
 
-                 cartListAdapter = new CartListAdapter(getContext(), R.layout.cart_item, cartItemArrayList);
+
+                cartListAdapter = new CartListAdapter(getContext(), R.layout.cart_item, cartItemArrayList);
                 listView.setAdapter(cartListAdapter);
             }
             else{
@@ -222,5 +230,6 @@ public class CartFragment extends Fragment{
         Log.v("TAG",res);
         return res;
     }
+
 
 }
